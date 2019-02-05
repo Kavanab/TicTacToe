@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TicTacToe</title>
+    <link href="app.css" type="text/css" rel="stylesheet"></link>
+  </head>
+  <body>
+    <div ng-app="ticTacToeApp" class="ng-cloak" ng-cloak="">
+       <div ng-controller="gameController as ctrl">
+         <h2>Tic Tac Toe</h2>
+         <div class="gameinfo">
+           <!-- <label>Board Size</label>
+           <input type="number" ng-model="newSize" />
+           <br/>
+           <label>How many in a row to win?</label>
+           <input type="number" ng-model="newNumberToWin" /> -->
+           <button ng-click="ctrl.newGame($event);">new game</button>
+           <!-- <p ng-show="errors">{{errors}}</p> -->
+         </div>
+          <hr/>
+          <div class="board">
+            <p ng-show="!winner && !draw">{{currentPlayer}}'s turn</p>
+            <p ng-show="winner" class="won">{{currentPlayer}} WON</p>
+            <p ng-show="draw">DRAW</p>
+            <div ng-repeat="positionInfo in board" class="square" ng-click="ctrl.playTurn($event, positionInfo)" ng-class="{'floatme': !($index % boardsize)}">
+              {{positionInfo.player}}
+            </div>
+          </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="app.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.core.min.js"></script>
+</html>
